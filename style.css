@@ -1,0 +1,25 @@
+.header {
+    padding: 5px;
+    text-align: center;
+    background: navy;
+    color: white;
+    font-size: 20px;
+    margin: 0;
+}
+
+.search-area {
+    position: relative;
+    text-align: left;
+    height: 500px;
+    width: 350px;
+    float: left;
+}
+
+.city-info {
+    position: relative;
+    padding-bottom: 20px;
+}
+
+.five-day {
+    position: relative;
+}
