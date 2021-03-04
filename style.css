@@ -27,7 +27,7 @@
 form {
     background-color: navy;
     width: 300px;
-    height: 44px;
+    height: 60px;
     border-radius: 5px;
     display: flex;
     flex-direction: row;
@@ -62,3 +62,11 @@ svg {
     height: 24px;
     padding: 10px;
   }
+
+#query-input {
+    height: 40px;
+    width: 120px;
+    color: white;
+    background-color: navy;
+    flex: 1;
+}

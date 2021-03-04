@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en-us">
+
+<head>
+    <title>Weather Dashboard</title>
+    <link rel="stylesheet" href="./style.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="./script.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
+</head>
+
+<body>
+    <div class="header">
+        <h1>Weather Dashboard</h1>
+    </div>
+    <div>
+        <h3>Search for a city:</h3>
+        <form>
+            <input type="text" id="query-input" placeholder="Search...">
+            <button id="search-btn" type="button">
+                <svg viewBox="0 0 1024 1024">
+                    <path class="path1" d="M848.471 928l-263.059-263.059c-48.941 36.706-110.118 55.059-177.412 55.059-171.294 0-312-140.706-312-312s140.706-312 312-312c171.294 0 312 140.706 312 312 0 67.294-24.471 128.471-55.059 177.412l263.059 263.059-79.529 79.529zM189.623 408.078c0 121.364 97.091 218.455 218.455 218.455s218.455-97.091 218.455-218.455c0-121.364-103.159-218.455-218.455-218.455-121.364 0-218.455 97.091-218.455 218.455z">
+                    </path>
+                </svg>
+            </button>
+        </form>
+    </div>
+    <div class="city-info">
+        <h3>City Name:</h3>
+        <p>Date:</p>
+        <p>Temperature:</p>
+        <p>Wind Speed:</p>
+        <p>Uv Index:</p>
+    </div>
+    <div class= "five-day">
+        <h3>5-day Forcast:</h3>
+    </div>    
+   
+</body> 
