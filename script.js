@@ -1,8 +1,13 @@
 const FIVEDAY_WEATHER_ENDPOINT = "https://api.openweathermap.org/data/2.5/forecast"
 const TODAYS_WEATHER_ENDPOINT = "https://api.openweathermap.org/data/2.5/weather"
 const UVI_ENDPOINT = "http://api.openweathermap.org/data/2.5/uvi"
+const ICON_URL = "http://openweathermap.org/img/wn/"
 const API_KEY = "0316fa16dc8334829cbab528b156ea77"
 let query = ""
+
+const fetchIconUrl = (icon) => {
+    return `${ICON_URL}${icon}@2x.png`
+}
 
 const fetchUVIndex = async(lat, lon) => {
     const url = `${UVI_ENDPOINT}?lat=${lat}&appid=${API_KEY}&units=imperial&lon=${lon}`
@@ -31,6 +36,7 @@ const fetchFiveDayForcast = async (city) => {
         if (today.clone().add(offset, "days").dayOfYear() == date.dayOfYear()){
             if (date.hour() == hour){
                 let weather = item.main
+                weather.icon = fetchIconUrl(item.weather[0].icon)
                 weather.windSpeed = item.wind.speed
                 const result = {
                     date,
@@ -77,18 +83,29 @@ const setTodaysUI = (data) => {
     $("#ci-date").html(dateStr)
     $("#ci-temp").html(temp)
     $("#ci-windSpeed").html(windSpeed)
-    $("#ci-uvi").html(UV)
+    const rawUV = weather.UV
+    let uvClass = null
+    if (rawUV <= 2){
+        uvClass = uvClasses[0]
+    } else if (rawUV <= 5){
+        uvClass = uvClasses[1]
+    } else {
+        uvClass = uvClasses[2]
+    }
+    $("#ci-uvi").html(`<div class=${uvClass}><p id="uv-index">UV Index: ${rawUV}</p></div>`)
 }
 
 const setFiveDayUI = (data) => {
     console.log("five day container", $("#fiveDay"))
     console.log("five day data", data)
+    $("#five-day").empty()
     data.five_day_forcast.forEach((day) => {
         const dateStr = day.date.format("M-D-YYYY")
         const temp = day.weather.temp
         const humidity = day.weather.humidity
         $("#five-day").append(`<div id="five-day-element">
             <h5 class="five-day-text">${dateStr}</h5>
+            <img class="icon" src=${day.weather.icon}></img>
             <h5 class="five-day-text">Temperature: ${temp}&#8457;</h5>
             <h5 class="five-day-text">Humidity: ${humidity}&#x0025;</h5>
         </div>`)
@@ -98,7 +115,7 @@ const setFiveDayUI = (data) => {
 
 
 $(document).ready(() => {
-    $("#query-input").keyup((event) => {
+    $("#query-input").change((event) => {
         if (event.target && event.target.value){
             query = event.target.value
         }
