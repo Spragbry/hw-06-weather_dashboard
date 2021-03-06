@@ -7,5 +7,7 @@ This Weather Dashboard is an easy way for travelers/ locals to search multiple c
 
 # link to deployed application
 
+https://spragbry.github.io/hw-06-weather_dashboard/.
+
 https://github.com/Spragbry/hw-06-weather_dashboard
 
