@@ -20,8 +20,19 @@
     padding-bottom: 20px;
 }
 
-.five-day {
-    position: relative;
+#five-day {
+    display: flex;
+    flex-direction: row;
+}
+
+#five-day-element {
+    height: 100px;
+    width: 100px;
+    margin: 10px;
+    background-color: lightskyblue;
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
 }
 
 form {
@@ -69,4 +80,18 @@ svg {
     color: white;
     background-color: navy;
     flex: 1;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.five-day-text {
+    color: black;
+    text-align: left;
+    margin: 0px;
+    padding: 0px;
+    font-family: sans-serif;
 }
